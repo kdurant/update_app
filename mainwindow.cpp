@@ -2,8 +2,7 @@
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
@@ -30,6 +29,7 @@ void MainWindow::initSignalSlot()
 {
     connect(udpSocket, SIGNAL(readyRead()), this, SLOT(processPendingDatagram()));
     connect(ui->rbt_StatusEnable, SIGNAL(clicked()), this, SLOT(udpBind()));
+    //    connect(ui->bt_Erase, SIGNAL(clicked()), this, SLOT)
 }
 
 //configIni->setValue("Laser/freq", 1111);

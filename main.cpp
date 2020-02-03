@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
     qInstallMessageHandler(customMessageOutput);
 
     QApplication a(argc, argv);
-    QFile qss(":/qss/ui.qss");
+    QFile        qss(":/qss/ui.qss");
     //    QFile qss("basic.qss");
     if(qss.open(QFile::ReadOnly))
         a.setStyleSheet(qss.readAll());
