@@ -4,6 +4,7 @@
 #include <QFile>
 #include <QTime>
 #include <QMessageBox>
+#include <QtTest/QtTest>
 
 const QString logFilePath = "debug.log";
 // redirect qDebug to file

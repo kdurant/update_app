@@ -33,3 +33,12 @@ void MainWindow::closeEvent(QCloseEvent *event)
 {
     saveParameter();
 }
+
+void MainWindow::udpBind()
+{
+    udpSocket = new QUdpSocket(this);
+    if(!udpSocket->bind(QHostAddress(ui->lineEdit_HostIP->text()), ui->lineEdit_HostIP->text().toInt()))
+        QMessageBox::warning(this, "警告", "雷达连接失败");
+    else
+        ui->statusBar->showMessage(tr("连接设备成功"), 0);
+}

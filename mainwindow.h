@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QSettings>
+#include <QUdpSocket>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,9 +22,13 @@ public:
 
     void initParameter();
     void saveParameter();
+    void udpBind();
 
 private:
     Ui::MainWindow *ui;
     QSettings *configIni;
+
+
+    QUdpSocket *    udpSocket;
 };
 #endif // MAINWINDOW_H
