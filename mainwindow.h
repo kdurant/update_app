@@ -22,6 +22,10 @@ public:
 
     void initParameter();
     void saveParameter();
+    void initSignalSlot();
+
+private slots:
+    void processPendingDatagram();
     void udpBind();
 
 private:

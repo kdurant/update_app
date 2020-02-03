@@ -36,7 +36,14 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="lineEdit_HostPort"/>
+        <widget class="QLineEdit" name="lineEdit_HostPort">
+         <property name="text">
+          <string>6666</string>
+         </property>
+         <property name="placeholderText">
+          <string>6666</string>
+         </property>
+        </widget>
        </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label_HostIP">
@@ -46,10 +53,24 @@
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QLineEdit" name="lineEdit_DevPort"/>
+        <widget class="QLineEdit" name="lineEdit_DevPort">
+         <property name="text">
+          <string>5555</string>
+         </property>
+         <property name="placeholderText">
+          <string>5555</string>
+         </property>
+        </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QLineEdit" name="lineEdit_DevIP"/>
+        <widget class="QLineEdit" name="lineEdit_DevIP">
+         <property name="text">
+          <string>192.168.1.101</string>
+         </property>
+         <property name="placeholderText">
+          <string>192.168.1.101</string>
+         </property>
+        </widget>
        </item>
        <item row="1" column="0">
         <widget class="QLabel" name="label_HostPort">
@@ -61,22 +82,25 @@
        <item row="0" column="1">
         <widget class="QLineEdit" name="lineEdit_HostIP">
          <property name="text">
-          <string/>
+          <string>192.168.1.166</string>
          </property>
          <property name="maxLength">
-          <number>20</number>
+          <number>32767</number>
+         </property>
+         <property name="placeholderText">
+          <string>192.168.1.166</string>
          </property>
         </widget>
        </item>
        <item row="4" column="0">
-        <widget class="QRadioButton" name="radioButton">
+        <widget class="QRadioButton" name="rbt_StatusEnable">
          <property name="text">
           <string>Connect</string>
          </property>
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QRadioButton" name="radioButton_2">
+        <widget class="QRadioButton" name="rbt_StatusDisable">
          <property name="text">
           <string>Disconnect</string>
          </property>
