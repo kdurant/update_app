@@ -21,20 +21,6 @@
        <string>GroupBox</string>
       </property>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_DevIP">
-         <property name="text">
-          <string>Device IP:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_DevPort">
-         <property name="text">
-          <string>Device port:</string>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="1">
         <widget class="QLineEdit" name="lineEdit_HostPort">
          <property name="text">
@@ -45,13 +31,6 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_HostIP">
-         <property name="text">
-          <string>Host IP:</string>
-         </property>
-        </widget>
-       </item>
        <item row="3" column="1">
         <widget class="QLineEdit" name="lineEdit_DevPort">
          <property name="text">
@@ -59,6 +38,40 @@
          </property>
          <property name="placeholderText">
           <string>5555</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="lineEdit_HostIP">
+         <property name="text">
+          <string>192.168.1.166</string>
+         </property>
+         <property name="maxLength">
+          <number>32767</number>
+         </property>
+         <property name="placeholderText">
+          <string>192.168.1.166</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_DevIP">
+         <property name="text">
+          <string>Device IP:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QRadioButton" name="rbt_StatusEnable">
+         <property name="text">
+          <string>Connect</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QRadioButton" name="rbt_StatusDisable">
+         <property name="text">
+          <string>Disconnect</string>
          </property>
         </widget>
        </item>
@@ -79,30 +92,17 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="lineEdit_HostIP">
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_DevPort">
          <property name="text">
-          <string>192.168.1.166</string>
-         </property>
-         <property name="maxLength">
-          <number>32767</number>
-         </property>
-         <property name="placeholderText">
-          <string>192.168.1.166</string>
+          <string>Device port:</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
-        <widget class="QRadioButton" name="rbt_StatusEnable">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_HostIP">
          <property name="text">
-          <string>Connect</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QRadioButton" name="rbt_StatusDisable">
-         <property name="text">
-          <string>Disconnect</string>
+          <string>Host IP:</string>
          </property>
         </widget>
        </item>
@@ -112,7 +112,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -120,21 +120,21 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="bt_SelectFile">
           <property name="text">
            <string>select file</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="bt_Update">
           <property name="text">
            <string>Start update</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QProgressBar" name="progressBar">
+         <widget class="QProgressBar" name="pgb_Update">
           <property name="value">
            <number>24</number>
           </property>
@@ -169,155 +169,147 @@
        <attribute name="title">
         <string>Tab 2</string>
        </attribute>
-       <widget class="QLabel" name="label_3">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>30</y>
-          <width>131</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Erase block addr:</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_3">
-        <property name="geometry">
-         <rect>
-          <x>190</x>
-          <y>30</y>
-          <width>142</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="maxLength">
-         <number>20</number>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_4">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>80</y>
-          <width>141</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Read block addr:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_5">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>260</y>
-          <width>131</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Write block addr:</string>
-        </property>
-       </widget>
-       <widget class="QPlainTextEdit" name="plainTextEdit">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>150</y>
-          <width>421</width>
-          <height>101</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QPlainTextEdit" name="plainTextEdit_2">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>350</y>
-          <width>421</width>
-          <height>101</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_4">
-        <property name="geometry">
-         <rect>
-          <x>180</x>
-          <y>80</y>
-          <width>142</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="maxLength">
-         <number>20</number>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_6">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>120</y>
-          <width>141</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Read block data:</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_5">
-        <property name="geometry">
-         <rect>
-          <x>160</x>
-          <y>260</y>
-          <width>142</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="maxLength">
-         <number>20</number>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_7">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>310</y>
-          <width>141</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Write block data:</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_3">
-        <property name="geometry">
-         <rect>
-          <x>40</x>
-          <y>480</y>
-          <width>89</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;compare read and write data in same block&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="text">
-         <string>compare</string>
-        </property>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Erase addr:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="lineEdit_EraseAddr">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="maxLength">
+             <number>20</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QPushButton" name="bt_Erase">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;compare read and write data in same block&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string>erase data</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Read addr:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="2">
+           <widget class="QLineEdit" name="lineEdit_ReadAddr">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="maxLength">
+             <number>20</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bt_Read">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;compare read and write data in same block&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>read data</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPlainTextEdit" name="pte_ReadData"/>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="1" colspan="2">
+           <widget class="QLineEdit" name="lineEdit_WriteAddr">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="maxLength">
+             <number>20</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <widget class="QPushButton" name="bt_GenerateData">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;compare read and write data in same block&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="text">
+             <string>generate data</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QComboBox" name="comboBox_Pattern">
+            <item>
+             <property name="text">
+              <string>Inc</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Dec</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Random</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Constant</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Write addr:</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bt_Write">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;compare read and write data in same block&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>write data</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPlainTextEdit" name="pte_WriteData"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bt_Compare">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;compare read and write data in same block&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>compare</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
