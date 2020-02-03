@@ -28,12 +28,25 @@
          </property>
         </widget>
        </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_DevPort">
+         <property name="text">
+          <string>Device port:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="lineEdit_HostPort"/>
+       </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label_HostIP">
          <property name="text">
           <string>Host IP:</string>
          </property>
         </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="lineEdit_DevPort"/>
        </item>
        <item row="2" column="1">
         <widget class="QLineEdit" name="lineEdit_DevIP"/>
@@ -55,18 +68,19 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_DevPort">
+       <item row="4" column="0">
+        <widget class="QRadioButton" name="radioButton">
          <property name="text">
-          <string>Device port:</string>
+          <string>Connect</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="lineEdit_HostPort"/>
-       </item>
-       <item row="3" column="1">
-        <widget class="QLineEdit" name="lineEdit_DevPort"/>
+       <item row="4" column="1">
+        <widget class="QRadioButton" name="radioButton_2">
+         <property name="text">
+          <string>Disconnect</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
