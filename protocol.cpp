@@ -22,7 +22,9 @@ QByteArray Protocol::encode(qint32 command, qint32 data_len, qint32 data)
     origin.append(QByteArray::number(data, 16).rightJustified(8, '0').append(504, '0'));
     origin.append(QByteArray::number(checksum, 16).rightJustified(8, '0'));
     frame = QByteArray::fromHex(origin);
-
+#ifdef PRINT_DEBUG_INFO
+    qDebug() << frame.toHex();
+#endif
     return frame;
 }
 

@@ -36,6 +36,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 #DEFINES += LOG2FILE
+DEFINES += PRINT_DEBUG_INFO
 
 RESOURCES += \
     res.qrc

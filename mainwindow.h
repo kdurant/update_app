@@ -31,6 +31,7 @@ public:
 
 private slots:
     void processPendingDatagram();
+    void debugNorFlash();
     void udpBind();
 
 private:
@@ -38,5 +39,7 @@ private:
     QSettings *     configIni;
 
     QUdpSocket *udpSocket;
+    QHostAddress deviceIP;
+    quint16      devicePort;
 };
 #endif  // MAINWINDOW_H

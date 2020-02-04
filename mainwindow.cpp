@@ -10,6 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     configIni = new QSettings("./config.ini", QSettings::IniFormat);
 
+    deviceIP = QHostAddress(ui->lineEdit_DevIP->text());
+    devicePort = ui->lineEdit_DevPort->text().toInt();
+
     initParameter();
     initSignalSlot();
     udpBind();
@@ -29,7 +32,9 @@ void MainWindow::initSignalSlot()
 {
     connect(udpSocket, SIGNAL(readyRead()), this, SLOT(processPendingDatagram()));
     connect(ui->rbt_StatusEnable, SIGNAL(clicked()), this, SLOT(udpBind()));
-    //    connect(ui->bt_Erase, SIGNAL(clicked()), this, SLOT)
+    connect(ui->bt_Erase, SIGNAL(clicked()), this, SLOT(debugNorFlash()));
+    connect(ui->bt_Read, SIGNAL(clicked()), this, SLOT(debugNorFlash()));
+    connect(ui->bt_Write, SIGNAL(clicked()), this, SLOT(debugNorFlash()));
 }
 
 //configIni->setValue("Laser/freq", 1111);
@@ -60,5 +65,27 @@ void MainWindow::udpBind()
 
 void MainWindow::processPendingDatagram()
 {
+    return;
+}
+
+void MainWindow::debugNorFlash()
+{
+    QPushButton *bt = qobject_cast<QPushButton *>(sender());
+    QString send = bt->text();
+    Protocol p;
+    QByteArray frame;
+    if(send == "erase data")
+    {
+        frame = p.encode(ERASE_BLOCK_RUN, 4, 0x01);
+    }
+    else if(send == "read data")
+    {
+        frame = p.encode(READ_BLOCK_RUN, 4, 0x01);
+    }
+    else if(send == "write data")
+    {
+        frame = p.encode(WRITE_BLOCK_RUN, 4, 0x01);
+    }
+    udpSocket->writeDatagram(frame.data(), frame.size(), deviceIP, devicePort);
     return;
 }
