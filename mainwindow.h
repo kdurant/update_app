@@ -6,6 +6,7 @@
 #include <QUdpSocket>
 #include <QMessageBox>
 #include <QTime>
+#include <QFileDialog>
 
 #include "protocol.h"
 
@@ -34,6 +35,8 @@ private slots:
     void processPendingDatagram();
     void debugNorFlash();
     void udpBind();
+
+    void selectFile();
 
 private:
     Ui::MainWindow *ui;

@@ -112,7 +112,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -141,12 +141,12 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="lineEdit_6">
+         <widget class="QLineEdit" name="lineEdit_Firmwire">
           <property name="text">
            <string/>
           </property>
           <property name="maxLength">
-           <number>20</number>
+           <number>32767</number>
           </property>
          </widget>
         </item>

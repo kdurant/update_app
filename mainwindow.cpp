@@ -37,6 +37,7 @@ void MainWindow::initSignalSlot()
     connect(ui->bt_Write, SIGNAL(clicked()), this, SLOT(debugNorFlash()));
     connect(ui->bt_GenerateData, SIGNAL(clicked()), this, SLOT(debugNorFlash()));
     connect(ui->bt_Compare, SIGNAL(clicked()), this, SLOT(debugNorFlash()));
+    connect(ui->bt_SelectFile, SIGNAL(clicked()), this, SLOT(selectFile()));
 }
 
 //configIni->setValue("Laser/freq", 1111);
@@ -131,4 +132,20 @@ void MainWindow::debugNorFlash()
     }
     udpSocket->writeDatagram(frame.data(), frame.size(), deviceIP, devicePort);
     return;
+}
+
+void MainWindow::selectFile()
+{
+    QString fileName = QFileDialog::getOpenFileName(
+        this,
+        "open",  // 对话框标题
+        ".",     //路径
+        "source(*.cpp *.h);;Text(*.txt);;all(*.*)");
+    if(fileName.isEmpty())
+    {
+        QMessageBox::warning(this, "Warning!", "Failed to open the video!");
+        return;
+    }
+    ui->lineEdit_Firmwire->setText(fileName);
+    qDebug() << fileName;
 }
