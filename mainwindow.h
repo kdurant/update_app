@@ -5,6 +5,7 @@
 #include <QSettings>
 #include <QUdpSocket>
 #include <QMessageBox>
+#include <QTime>
 
 #include "protocol.h"
 
