@@ -36,6 +36,7 @@ void MainWindow::initSignalSlot()
     connect(ui->bt_Read, SIGNAL(clicked()), this, SLOT(debugNorFlash()));
     connect(ui->bt_Write, SIGNAL(clicked()), this, SLOT(debugNorFlash()));
     connect(ui->bt_GenerateData, SIGNAL(clicked()), this, SLOT(debugNorFlash()));
+    connect(ui->bt_Compare, SIGNAL(clicked()), this, SLOT(debugNorFlash()));
 }
 
 //configIni->setValue("Laser/freq", 1111);
@@ -116,6 +117,17 @@ void MainWindow::debugNorFlash()
         }
         qDebug() << s.length();
         ui->pte_WriteData->setPlainText(s);
+    }
+    else if(send == "compare")
+    {
+        if((ui->pte_ReadData->toPlainText() != 256) || (ui->pte_WriteData->toPlainText() != 256))
+        {
+            QMessageBox::warning(this, "警告", "Please write data or read data");
+        }
+        else if(ui->pte_ReadData->toPlainText() == ui->pte_WriteData->toPlainText())
+            QMessageBox::information(this, "Info", "Compare success");
+        else
+            QMessageBox::warning(this, "警告", "Compare fail.");
     }
     udpSocket->writeDatagram(frame.data(), frame.size(), deviceIP, devicePort);
     return;
