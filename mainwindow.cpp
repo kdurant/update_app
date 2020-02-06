@@ -5,6 +5,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Update Tool");
 
     udpSocket = new QUdpSocket(this);
 
@@ -38,6 +39,7 @@ void MainWindow::initSignalSlot()
     connect(ui->bt_GenerateData, SIGNAL(clicked()), this, SLOT(debugNorFlash()));
     connect(ui->bt_Compare, SIGNAL(clicked()), this, SLOT(debugNorFlash()));
     connect(ui->bt_SelectFile, SIGNAL(clicked()), this, SLOT(selectFile()));
+    connect(ui->bt_Update, SIGNAL(clicked()), this, SLOT(writeFirmwire()));
 }
 
 //configIni->setValue("Laser/freq", 1111);
@@ -136,16 +138,46 @@ void MainWindow::debugNorFlash()
 
 void MainWindow::selectFile()
 {
-    QString fileName = QFileDialog::getOpenFileName(
+    firmwireBin = QFileDialog::getOpenFileName(
         this,
         "open",  // 对话框标题
         ".",     //路径
         "source(*.cpp *.h);;Text(*.txt);;all(*.*)");
-    if(fileName.isEmpty())
+    if(firmwireBin.isEmpty())
     {
         QMessageBox::warning(this, "Warning!", "Failed to open the video!");
         return;
     }
-    ui->lineEdit_Firmwire->setText(fileName);
-    qDebug() << fileName;
+    ui->lineEdit_Firmwire->setText(firmwireBin);
+    qDebug() << firmwireBin;
+}
+
+void MainWindow::writeFirmwire()
+{
+    QFile file(this->firmwireBin);
+    file.open(QIODevice::ReadOnly);
+    qint32 hasWriteBytes = 0;
+    QByteArray data;
+    //    Protocol   p;
+    //    QByteArray frame;
+
+    //    frame = p.encode(ERASE_BLOCK_RUN, 4, ui->lineEdit_EraseAddr->text().toInt());
+
+    while(!file.atEnd())
+    {
+        data = file.read(BYTES_PER_WRITE);
+        //        if(hasWriteBytes % 0x10000 == 0)
+        //        {
+        //            frame = p.encode(ERASE_BLOCK_RUN, 4, hasWriteBytes);
+        //            udpSocket->writeDatagram(frame.data(), frame.size(), deviceIP, devicePort);
+        //        }
+
+        //        frame = p.encode(WRITE_BLOCK_ADDR, 4, hasWriteBytes);
+        //        udpSocket->writeDatagram(frame.data(), frame.size(), deviceIP, devicePort);
+        //        frame = p.encode(WRITE_BLOCK_DATA, file.mid(hasWriteBytes, 256));
+        //        frame = p.encode(WRITE_BLOCK_RUN, 4, 0x01);
+        //        udpSocket->writeDatagram(frame.data(), frame.size(), deviceIP, devicePort);
+
+        hasWriteBytes += BYTES_PER_WRITE;
+    }
 }

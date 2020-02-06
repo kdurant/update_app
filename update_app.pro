@@ -24,6 +24,7 @@ SOURCES += \
 
 HEADERS += \
     Testprotocol.h \
+    config.h \
     mainwindow.h \
     protocol.h
 

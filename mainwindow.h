@@ -9,6 +9,7 @@
 #include <QFileDialog>
 
 #include "protocol.h"
+#include "config.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -37,10 +38,13 @@ private slots:
     void udpBind();
 
     void selectFile();
+    void writeFirmwire();
 
 private:
     Ui::MainWindow *ui;
     QSettings *     configIni;
+
+    QString firmwireBin;
 
     QUdpSocket *udpSocket;
     QHostAddress deviceIP;

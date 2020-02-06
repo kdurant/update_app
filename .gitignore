@@ -17,7 +17,8 @@ GRTAGS
 GTAGS*
 
 ##################qt###################
-!compile_flags.txt
+Debug
+Release
 
 # C++ objects and libs
 *.slo
