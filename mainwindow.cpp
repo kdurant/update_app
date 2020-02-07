@@ -6,6 +6,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->setWindowTitle("Update Tool");
+    ui->pgb_Update->setOrientation(Qt::Horizontal);
+    ui->pgb_Update->setMaximum(0);
 
     udpSocket = new QUdpSocket(this);
 
@@ -156,7 +158,10 @@ void MainWindow::writeFirmwire()
 {
     QFile file(this->firmwireBin);
     file.open(QIODevice::ReadOnly);
-    qint32 hasWriteBytes = 0;
+
+    ui->pgb_Update->setMaximum(file.size());
+
+    qint32     hasWriteBytes = 0;
     QByteArray data;
     //    Protocol   p;
     //    QByteArray frame;
@@ -166,6 +171,8 @@ void MainWindow::writeFirmwire()
     while(!file.atEnd())
     {
         data = file.read(BYTES_PER_WRITE);
+        qDebug() << data;
+        QThread::usleep(1800);
         //        if(hasWriteBytes % 0x10000 == 0)
         //        {
         //            frame = p.encode(ERASE_BLOCK_RUN, 4, hasWriteBytes);
@@ -178,6 +185,7 @@ void MainWindow::writeFirmwire()
         //        frame = p.encode(WRITE_BLOCK_RUN, 4, 0x01);
         //        udpSocket->writeDatagram(frame.data(), frame.size(), deviceIP, devicePort);
 
-        hasWriteBytes += BYTES_PER_WRITE;
+        hasWriteBytes += data.size();
+        ui->pgb_Update->setValue(hasWriteBytes);
     }
 }

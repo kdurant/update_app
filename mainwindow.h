@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include <QTime>
 #include <QFileDialog>
+#include <QThread>
 
 #include "protocol.h"
 #include "config.h"
