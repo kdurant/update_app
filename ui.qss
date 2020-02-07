@@ -104,3 +104,18 @@ QGroupBox::title {
     padding:03px;
     background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0#FFEECE, stop: 1 #FFFFFF);
 }
+
+QProgressBar
+{
+    border: 0px transparent #000000;
+    border-radius: 0px;
+    background: #888888;
+    height: 30px;
+    font: 18px;
+    text-align:center;
+}
+
+QProgressBar::chunk
+{
+    background: #B48BFF;
+}
