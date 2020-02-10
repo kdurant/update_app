@@ -112,7 +112,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -174,6 +174,12 @@
          <layout class="QGridLayout" name="gridLayout_3">
           <item row="0" column="0">
            <widget class="QLabel" name="label_3">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;设置需要擦除扇区的地址。某个扇区内的任意地址皆可。&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;0x00 10 00 00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="whatsThis">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="text">
              <string>Erase addr:</string>
             </property>
@@ -201,6 +207,9 @@
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_4">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;1. 每次都256字节数据。&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;2. 数据不能跨越扇区&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;3. 00 10 00 01命令&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="text">
              <string>Read addr:</string>
             </property>
@@ -229,7 +238,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QPlainTextEdit" name="pte_ReadData"/>
+         <widget class="QPlainTextEdit" name="pte_ReadData">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(220, 255, 210);</string>
+          </property>
+         </widget>
         </item>
         <item>
          <layout class="QGridLayout" name="gridLayout_4">
@@ -297,7 +310,12 @@
          </widget>
         </item>
         <item>
-         <widget class="QPlainTextEdit" name="pte_WriteData"/>
+         <widget class="QPlainTextEdit" name="pte_WriteData">
+          <property name="styleSheet">
+           <string notr="true">border-color: rgb(255, 170, 0);
+background-color: rgb(85, 170, 127);</string>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QPushButton" name="bt_Compare">
