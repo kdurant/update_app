@@ -19,14 +19,16 @@
 typedef enum
 {
     GET_SYS_VERSION,
-//    ERASE_BLOCK_ADDR = 0x8000000C,
-    ERASE_BLOCK_RUN = 0x0000000C,
-//    READ_BLOCK_ADDR,
-    READ_BLOCK_RUN,
-    WRITE_BLOCK_ADDR,
-    WRITE_BLOCK_DATA,
-    WRITE_BLOCK_RUN
-}Command;
+    //    ERASE_BLOCK_ADDR = 0x8000000C,
+    ERASE_BLOCK_RUN = 0x00100000,
+    //    READ_BLOCK_ADDR,
+    READ_BLOCK_RUN   = 0x00100001,
+    WRITE_BLOCK_ADDR = 0x00100002,
+    WRITE_BLOCK_DATA = 0x00100003,
+    WRITE_BLOCK_RUN  = 0x00100004,
+    RES_FLASH_DATA   = 0x80100002
+
+} Command;
 
 typedef struct _data
 {
@@ -51,7 +53,7 @@ public:
 
     QByteArray encode(qint32 command, qint32 data_len, qint32 data);
     QByteArray encode(qint32 command, QString &data);
-    QString &decode(QQueue<QString> &frame);
+    QString &  decode(QQueue<QString> &frame);
 };
 
 #endif  // PROTOCOL_H
