@@ -8,12 +8,13 @@ MainWindow::MainWindow(QWidget *parent)
     this->setWindowTitle("Update Tool");
     ui->pgb_Update->setOrientation(Qt::Horizontal);
     ui->pgb_Update->setMaximum(0);
+    //    ui->tabWidget->setTabEnabled(1, false);
 
     udpSocket = new QUdpSocket(this);
 
     configIni = new QSettings("./config.ini", QSettings::IniFormat);
 
-    deviceIP = QHostAddress(ui->lineEdit_DevIP->text());
+    deviceIP   = QHostAddress(ui->lineEdit_DevIP->text());
     devicePort = ui->lineEdit_DevPort->text().toInt();
 
     initParameter();
@@ -77,10 +78,10 @@ void MainWindow::processPendingDatagram()
 
 void MainWindow::debugNorFlash()
 {
-    QPushButton *bt = qobject_cast<QPushButton *>(sender());
-    QString send = bt->text();
-    Protocol p;
-    QByteArray frame;
+    QPushButton *bt   = qobject_cast<QPushButton *>(sender());
+    QString      send = bt->text();
+    Protocol     p;
+    QByteArray   frame;
     if(send == "erase data")
     {
         frame = p.encode(ERASE_BLOCK_RUN, 4, ui->lineEdit_EraseAddr->text().toInt());
