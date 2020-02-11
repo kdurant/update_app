@@ -119,3 +119,7 @@ QProgressBar::chunk
 {
     background: #B48BFF;
 }
+
+QTabBar::tab:disabled {
+    width: 0; color: transparent;
+}
