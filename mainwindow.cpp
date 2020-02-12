@@ -43,6 +43,8 @@ void MainWindow::initSignalSlot()
     connect(ui->bt_Compare, SIGNAL(clicked()), this, SLOT(debugNorFlash()));
     connect(ui->bt_SelectFile, SIGNAL(clicked()), this, SLOT(selectFile()));
     connect(ui->bt_Update, SIGNAL(clicked()), this, SLOT(writeFirmwire()));
+
+    connect(udpSocket, SIGNAL(readyRead()), this, SLOT(processPendingDatagram()));
 }
 
 //configIni->setValue("Laser/freq", 1111);
@@ -73,7 +75,20 @@ void MainWindow::udpBind()
 
 void MainWindow::processPendingDatagram()
 {
-    return;
+    QByteArray datagram;
+    QString    data;
+    int        len;
+    while(udpSocket->hasPendingDatagrams())
+    {
+        len = udpSocket->pendingDatagramSize();
+        datagram.resize(len);
+        udpSocket->readDatagram(datagram.data(), datagram.size());
+
+        //        data = datagram.toHex();
+        //        if(data.mid(COMMAND_POS, COMMAND_LEN) == "80100002")
+        //            m_Update.ReadData = data;
+        //            qDebug() <<
+    }
 }
 
 void MainWindow::debugNorFlash()
@@ -121,7 +136,6 @@ void MainWindow::debugNorFlash()
                 s.append(QString("%1").arg(qrand() % 256, 2, 16, QChar('0')));
             }
         }
-        qDebug() << s.length();
         ui->pte_WriteData->setPlainText(s);
     }
     else if(send == "compare")

@@ -52,7 +52,6 @@ QByteArray Protocol::encode(qint32 command, QString &data)
     return frame;
 }
 
-//QString &Protocol::decode(QQueue<QString> &frame)
-//{
-//    //    return ;
-//}
+QString &Protocol::decode(QByteArray &frame)
+{
+}

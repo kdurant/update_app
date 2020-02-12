@@ -53,7 +53,13 @@ public:
 
     QByteArray encode(qint32 command, qint32 data_len, qint32 data);
     QByteArray encode(qint32 command, QString &data);
-    QString &  decode(QQueue<QString> &frame);
+
+    /**
+     * @brief 从返回的数据中得到nor flash的响应数据
+     * @param frame
+     * @return 
+     */
+    QString &decode(QByteArray &frame);
 };
 
 #endif  // PROTOCOL_H

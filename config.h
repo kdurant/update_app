@@ -9,8 +9,8 @@ typedef struct _Update
 {
     bool    hasWriteData;
     bool    hasReadData;
-    QString WriteData;
-    QString ReadData;
+    QByteArray WriteData;  //
+    QByteArray ReadData;
 } Update;
 
 #endif // CONFIG_H

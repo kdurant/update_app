@@ -50,7 +50,6 @@ private:
     QUdpSocket *udpSocket;
     QHostAddress deviceIP;
     quint16      devicePort;
-    QString      mWriteData;
-    QString      mReadData;
+    Update       m_Update;
 };
 #endif  // MAINWINDOW_H
