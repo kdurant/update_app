@@ -76,7 +76,7 @@ void MainWindow::udpBind()
 void MainWindow::processPendingDatagram()
 {
     QByteArray datagram;
-    QString    data;
+    QByteArray data;
     int        len;
     while(udpSocket->hasPendingDatagrams())
     {
